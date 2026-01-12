@@ -1,44 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <!-- Meta Pixel Code -->
-    <script>
-        ! function(f, b, e, v, n, t, s) {
-            if (f.fbq) return;
-            n = f.fbq = function() {
-                n.callMethod ?
-                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            };
-            if (!f._fbq) f._fbq = n;
-            n.push = n;
-            n.loaded = !0;
-            n.version = '2.0';
-            n.queue = [];
-            t = b.createElement(e);
-            t.async = !0;
-            t.src = v;
-            s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s)
-        }
-        (window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1183539050152137');
-        fbq('track', 'PageView');
-    </script>
-
-    <noscript>
-<img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1183539050152137&ev=PageView&noscript=1"/>
-</noscript>
-    <!-- End Meta Pixel Code -->
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Garud Fixer (Baazigar)</title>
-
-    <!-- Preload background for faster render -->
-    <link rel="preload" as="image" href="https://applescoop.org/image/wallpapers/iphone/iphone-dark-black-and-blue-abstract-impede-depth-effect-with-think-lines-apple-iphone-21-09-2025-1758398684-hd-wallpaper.webp">
+    <title>KING MAKER</title>
 
     <style>
         * {
@@ -48,15 +13,34 @@ src="https://www.facebook.com/tr?id=1183539050152137&ev=PageView&noscript=1"/>
             font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
         }
 
-        body {
-            background: #0c0f1a url("https://applescoop.org/image/wallpapers/iphone/iphone-dark-black-and-blue-abstract-impede-depth-effect-with-think-lines-apple-iphone-21-09-2025-1758398684-hd-wallpaper.webp") center/cover no-repeat fixed;
+        html, body {
+            height: 100%;
             color: #fff;
-            min-height: 100vh;
+            overflow-x: hidden;
         }
 
+        /* ===== Background Video ===== */
+        .video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .video-bg video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ===== Dark Overlay ===== */
         .overlay {
-            background: rgba(10, 12, 22, .82);
             min-height: 100vh;
+            background: rgba(8, 10, 18, 0.80);
+            z-index: 1;
         }
 
         .container {
@@ -65,39 +49,38 @@ src="https://www.facebook.com/tr?id=1183539050152137&ev=PageView&noscript=1"/>
             padding: 20px 15px 90px;
         }
 
-        /* Profile */
-
+        /* ===== Profile ===== */
         .profile-box {
             text-align: center;
             margin-bottom: 20px;
         }
 
         .profile-box img {
-            width: 95px;
-            height: 95px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
-            border: 2px solid #ffffff55;
+            border: 2px solid #ffffff66;
+            object-fit: cover;
         }
 
         .profile-box h1 {
-            margin-top: 10px;
-            font-size: 1.5rem;
-            font-weight: 700;
+            margin-top: 12px;
+            font-size: 1.6rem;
+            font-weight: 800;
         }
 
-        /* Card */
-
+        /* ===== Cards ===== */
         .card {
-            background: #ffffff12;
-            border: 1px solid #ffffff20;
+            background: #ffffff14;
+            border: 1px solid #ffffff25;
             border-radius: 12px;
             padding: 16px;
             margin-bottom: 15px;
             text-align: center;
+            backdrop-filter: blur(4px);
         }
 
-        /* Button */
-
+        /* ===== Buttons ===== */
         .btn {
             display: block;
             margin-top: 14px;
@@ -109,8 +92,7 @@ src="https://www.facebook.com/tr?id=1183539050152137&ev=PageView&noscript=1"/>
             text-decoration: none;
         }
 
-        /* Features */
-
+        /* ===== Features ===== */
         .features {
             list-style: none;
             margin-top: 8px;
@@ -126,8 +108,7 @@ src="https://www.facebook.com/tr?id=1183539050152137&ev=PageView&noscript=1"/>
             color: #4caf50;
         }
 
-        /* Footer */
-
+        /* ===== Footer ===== */
         .footer {
             text-align: center;
             font-size: .85rem;
@@ -139,8 +120,7 @@ src="https://www.facebook.com/tr?id=1183539050152137&ev=PageView&noscript=1"/>
             text-decoration: none;
         }
 
-        /* Bottom CTA */
-
+        /* ===== Bottom Fixed CTA ===== */
         .bottom-bar {
             position: fixed;
             bottom: 0;
@@ -149,6 +129,7 @@ src="https://www.facebook.com/tr?id=1183539050152137&ev=PageView&noscript=1"/>
             background: #000000cc;
             padding: 10px;
             text-align: center;
+            z-index: 10;
         }
 
         .bottom-bar a {
@@ -159,26 +140,37 @@ src="https://www.facebook.com/tr?id=1183539050152137&ev=PageView&noscript=1"/>
             border-radius: 30px;
             background: #12d8fa;
             color: #000;
-            font-weight: 700;
+            font-weight: 800;
             text-decoration: none;
         }
     </style>
 </head>
 
 <body>
+
+    <!-- ===== Background Video ===== -->
+    <div class="video-bg">
+        <video autoplay muted loop playsinline>
+            <source src="https://res.cloudinary.com/dzhykus7z/video/upload/v1768203780/BACKNEW_20_uonoms.mp4" type="video/mp4">
+        </video>
+    </div>
+
     <div class="overlay">
 
         <div class="container">
 
             <div class="profile-box">
-                <img src="https://d1yei2z3i6k35z.cloudfront.net/13184094/6952a267b21b7_40bb2f3d-25fd-484d-9b63-a8468a701820.jfif" alt="Garud Fixer">
-                <h1>Garud Fixer (Baazigar)</h1>
+                <img src="https://github.com/mrxsetup/KING_MAKER_PREDICTION/blob/main/KINGMAKERSOUTH.jpg?raw=true"
+                     alt="KING MAKER">
+                <h1>KING MAKER</h1>
             </div>
 
             <div class="card">
                 <h2>Cricket Match Predictions</h2>
                 <p style="opacity:.9;">Well researched match insights & analysis</p>
-                <a href="https://t.me/+9WnufKITJK9lM2I1" class="btn">Join Free Telegram Channel</a>
+                <a href="https://t.me/+FfCbk33qwjxmOTJl" class="btn">
+                    Join Free Telegram Channel
+                </a>
             </div>
 
             <div class="card">
@@ -205,10 +197,12 @@ src="https://www.facebook.com/tr?id=1183539050152137&ev=PageView&noscript=1"/>
         </div>
 
         <div class="bottom-bar">
-            <a href="https://t.me/+9WnufKITJK9lM2I1">अभी टेलीग्राम जॉइन करें</a>
+            <a href="https://t.me/+FfCbk33qwjxmOTJl">
+                अभी टेलीग्राम जॉइन करें
+            </a>
         </div>
 
     </div>
-</body>
 
+</body>
 </html>
