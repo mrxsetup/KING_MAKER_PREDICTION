@@ -1,36 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta Pixel Code -->
-    <script>
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){
-        n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;
-        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
-        t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}
-        (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init','2047892055751860');
-        fbq('track','PageView');
-    </script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KING MAKER</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
-        .neon-text{
-            color:#00fff7;
-            text-shadow:0 0 8px rgba(0,255,247,.8);
-        }
         .neon-box{
-            box-shadow:0 0 10px rgba(0,255,247,.7);
+            box-shadow:0 0 10px rgba(255,0,0,.8);
         }
         .btn-neon{
-            box-shadow:0 0 12px rgba(255,0,0,.7);
+            box-shadow:0 0 14px rgba(255,0,0,.9);
             animation:pulse 1.6s infinite;
         }
         @keyframes pulse{
@@ -38,7 +20,7 @@
             50%{transform:scale(1.06)}
         }
         .overlay{
-            position:absolute;
+            position:fixed;
             inset:0;
             background:rgba(0,0,0,.65);
             z-index:1;
@@ -48,7 +30,7 @@
             inset:0;
             z-index:-1;
         }
-        .video-bg video{
+        video{
             width:100%;
             height:100%;
             object-fit:cover;
@@ -56,71 +38,95 @@
     </style>
 </head>
 
-<body class="bg-black overflow-hidden">
+<body class="bg-black overflow-hidden text-white">
 
 <!-- ===== Background Video ===== -->
 <div class="video-bg">
-    <video autoplay muted loop playsinline>
-        <source src="https://res.cloudinary.com/dzhykus7z/video/upload/v1768203780/BACKNEW_20_uonoms.mp4" type="video/mp4">
-    </video>
+    <video id="bgVideo" autoplay muted playsinline></video>
 </div>
 
-<div class="relative min-h-screen flex items-center justify-center">
+<div class="overlay"></div>
 
-    <div class="overlay"></div>
+<div class="relative z-10 min-h-screen flex items-center justify-center px-4">
 
-    <div class="relative z-10 text-center text-white px-4 max-w-md w-full">
+    <div class="text-center max-w-md w-full">
 
-        <h1 class="text-3xl font-bold neon-text">
-            KING MAKER
-        </h1>
+        <h1 class="text-3xl font-bold mb-3">KING MAKER</h1>
 
         <img src="https://github.com/mrxsetup/KING_MAKER_PREDICTION/blob/main/KINGMAKERSOUTH.jpg?raw=true"
-             class="mx-auto w-28 h-28 rounded-full mt-4 border-2 border-cyan-400 neon-box object-cover">
+             class="mx-auto w-28 h-28 rounded-full border-2 border-red-500 neon-box object-cover">
 
-        <p class="mt-3 text-lg font-semibold">
-            Join Now <span id="countdown" class="text-yellow-400 text-2xl mx-1">20</span> Seconds
-        </p>
-
-        <div class="my-3">
-            <span class="text-red-500 text-3xl font-bold">Top</span>
-            <span class="bg-gray-900 px-3 py-1 rounded neon-box">Accuracy</span>
+        <!-- 🔴 Warning Box -->
+        <div class="mt-5 bg-red-600 text-white py-3 rounded-lg neon-box font-bold text-lg">
+            FREE JOINING ENDS IN
+            <div class="text-3xl mt-1" id="timer">--</div>
         </div>
 
-        <p class="text-sm mb-4">Daily Cricket Prediction 👇</p>
+        <p class="mt-4 text-sm">Daily Cricket Prediction 👇</p>
 
         <a href="https://t.me/+FfCbk33qwjxmOTJl">
-            <button class="btn-neon w-full bg-cyan-400 text-red-600 font-bold py-4 rounded-lg border-b-4 border-red-600">
+            <button class="btn-neon w-full mt-4 bg-cyan-400 text-red-700 font-bold py-4 rounded-lg">
                 JOIN KING MAKER
             </button>
         </a>
-
-        <a href="https://t.me/+FfCbk33qwjxmOTJl">
-            <button class="btn-neon w-full mt-4 bg-red-500 text-white font-bold py-4 rounded-lg border-b-4 border-cyan-400">
-                JOIN OFFICIAL CHANNEL
-            </button>
-        </a>
-
-        <div class="mt-5 flex justify-center">
-            <div class="text-[10px] px-3 py-1 rounded neon-box text-cyan-300 bg-black/70">
-                Ads-Setup By-@mrxsetup
-            </div>
-        </div>
 
     </div>
 </div>
 
 <script>
-    let time = 20;
-    const cd = document.getElementById("countdown");
-    const timer = setInterval(() => {
-        time--;
-        cd.textContent = time;
-        if (time <= 0) {
-            clearInterval(timer);
-            cd.textContent = "0";
+/* ===== Video Playlist ===== */
+const videos = [
+    "https://res.cloudinary.com/dzhykus7z/video/upload/v1768206316/50v_iedioy.mp4",
+    "https://res.cloudinary.com/dzhykus7z/video/upload/v1768206325/51v_mtwllp.mp4"
+];
+
+const video = document.getElementById("bgVideo");
+const timerEl = document.getElementById("timer");
+let index = 0;
+let totalSeconds = 0;
+let countdown;
+
+/* ===== Load video sequentially ===== */
+function playVideo(i){
+    video.src = videos[i];
+    video.play();
+}
+
+video.addEventListener("ended", () => {
+    index++;
+    if(index < videos.length){
+        playVideo(index);
+    }
+});
+
+/* ===== Calculate total duration ===== */
+let loaded = 0;
+videos.forEach(src => {
+    const v = document.createElement("video");
+    v.src = src;
+    v.addEventListener("loadedmetadata", () => {
+        totalSeconds += Math.floor(v.duration);
+        loaded++;
+        if(loaded === videos.length){
+            startTimer(totalSeconds);
+            playVideo(0);
+        }
+    });
+});
+
+/* ===== Timer + Auto Redirect ===== */
+function startTimer(sec){
+    let t = sec;
+    timerEl.textContent = t;
+    countdown = setInterval(() => {
+        t--;
+        timerEl.textContent = t;
+        if(t <= 0){
+            clearInterval(countdown);
+            window.location.href = "https://t.me/+FfCbk33qwjxmOTJl";
         }
     }, 1000);
+}
 </script>
 
 </body>
