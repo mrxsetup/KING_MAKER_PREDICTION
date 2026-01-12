@@ -1,131 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KING MAKER</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KING MAKER</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com"></script>
 
-    <style>
-        .neon-box{
-            box-shadow:0 0 10px rgba(255,0,0,.8);
-        }
-        .btn-neon{
-            box-shadow:0 0 14px rgba(255,0,0,.9);
-            animation:pulse 1.6s infinite;
-        }
-        @keyframes pulse{
-            0%,100%{transform:scale(1)}
-            50%{transform:scale(1.06)}
-        }
-        .overlay{
-            position:fixed;
-            inset:0;
-            background:rgba(0,0,0,.65);
-            z-index:1;
-        }
-        .video-bg{
-            position:fixed;
-            inset:0;
-            z-index:-1;
-        }
-        video{
-            width:100%;
-            height:100%;
-            object-fit:cover;
-        }
-    </style>
+<style>
+.neon-box{
+    box-shadow:0 0 12px rgba(255,0,0,.9);
+}
+.btn-neon{
+    box-shadow:0 0 18px rgba(0,255,255,.9);
+    animation:pulse 1.6s infinite;
+}
+.btn-red-neon{
+    box-shadow:0 0 20px rgba(255,0,0,1);
+    animation:pulse 1.4s infinite;
+}
+@keyframes pulse{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.07)}
+}
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    z-index:1;
+}
+.video-bg{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+}
+video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+</style>
 </head>
 
 <body class="bg-black overflow-hidden text-white">
 
 <!-- ===== Background Video ===== -->
 <div class="video-bg">
-    <video id="bgVideo" autoplay muted playsinline></video>
+    <video id="bgVideo" autoplay muted playsinline preload="auto"></video>
 </div>
 
 <div class="overlay"></div>
 
 <div class="relative z-10 min-h-screen flex items-center justify-center px-4">
 
-    <div class="text-center max-w-md w-full">
+<div class="text-center max-w-md w-full">
 
-        <h1 class="text-3xl font-bold mb-3">KING MAKER</h1>
+<h1 class="text-3xl font-bold mb-3">KING MAKER</h1>
 
-        <img src="https://github.com/mrxsetup/KING_MAKER_PREDICTION/blob/main/KINGMAKERSOUTH.jpg?raw=true"
-             class="mx-auto w-28 h-28 rounded-full border-2 border-red-500 neon-box object-cover">
+<img src="https://github.com/mrxsetup/KING_MAKER_PREDICTION/blob/main/KINGMAKERSOUTH.jpg?raw=true"
+class="mx-auto w-28 h-28 rounded-full border-2 border-red-500 neon-box object-cover">
 
-        <!-- 🔴 Warning Box -->
-        <div class="mt-5 bg-red-600 text-white py-3 rounded-lg neon-box font-bold text-lg">
-            FREE JOINING ENDS IN
-            <div class="text-3xl mt-1" id="timer">--</div>
-        </div>
+<!-- 🔴 Warning Box -->
+<div class="mt-5 bg-red-600 py-3 rounded-lg neon-box font-bold text-lg">
+FREE JOINING ENDS IN
+<div class="text-3xl mt-1" id="timer">--</div>
+</div>
 
-        <p class="mt-4 text-sm">Daily Cricket Prediction 👇</p>
+<p class="mt-4 text-sm">Daily Cricket Prediction 👇</p>
 
-        <a href="https://t.me/+FfCbk33qwjxmOTJl">
-            <button class="btn-neon w-full mt-4 bg-cyan-400 text-red-700 font-bold py-4 rounded-lg">
-                JOIN KING MAKER
-            </button>
-        </a>
+<!-- CYAN BUTTON -->
+<a href="https://t.me/+FfCbk33qwjxmOTJl" class="block">
+<div class="btn-neon w-full mt-4 bg-cyan-400 text-red-700 font-bold py-4 rounded-lg">
+JOIN KING MAKER
+</div>
+</a>
 
-    </div>
+<!-- 🔴 RED OFFICIAL BUTTON -->
+<a href="https://t.me/+FfCbk33qwjxmOTJl" class="block">
+<div class="btn-red-neon w-full mt-4 bg-red-600 text-white font-bold py-4 rounded-lg">
+JOIN OFFICIAL CHANNEL
+</div>
+</a>
+
+</div>
 </div>
 
 <script>
-/* ===== Video Playlist ===== */
 const videos = [
-    "https://res.cloudinary.com/dzhykus7z/video/upload/v1768206316/50v_iedioy.mp4",
-    "https://res.cloudinary.com/dzhykus7z/video/upload/v1768206325/51v_mtwllp.mp4"
+ "https://res.cloudinary.com/dzhykus7z/video/upload/v1768206316/50v_iedioy.mp4",
+ "https://res.cloudinary.com/dzhykus7z/video/upload/v1768206325/51v_mtwllp.mp4"
 ];
 
 const video = document.getElementById("bgVideo");
 const timerEl = document.getElementById("timer");
+
 let index = 0;
 let totalSeconds = 0;
-let countdown;
 
-/* ===== Load video sequentially ===== */
+/* Play video instantly */
 function playVideo(i){
     video.src = videos[i];
+    video.load();
     video.play();
 }
 
-video.addEventListener("ended", () => {
-    index++;
-    if(index < videos.length){
-        playVideo(index);
-    }
+video.addEventListener("ended",()=>{
+    index = (index + 1) % videos.length;
+    playVideo(index);
 });
 
-/* ===== Calculate total duration ===== */
+/* Calculate duration */
 let loaded = 0;
-videos.forEach(src => {
-    const v = document.createElement("video");
-    v.src = src;
-    v.addEventListener("loadedmetadata", () => {
-        totalSeconds += Math.floor(v.duration);
+videos.forEach(src=>{
+    const v=document.createElement("video");
+    v.src=src;
+    v.addEventListener("loadedmetadata",()=>{
+        totalSeconds+=Math.floor(v.duration);
         loaded++;
-        if(loaded === videos.length){
+        if(loaded===videos.length){
             startTimer(totalSeconds);
             playVideo(0);
         }
     });
 });
 
-/* ===== Timer + Auto Redirect ===== */
+/* Timer */
 function startTimer(sec){
-    let t = sec;
-    timerEl.textContent = t;
-    countdown = setInterval(() => {
+    let t=sec;
+    timerEl.textContent=t;
+    const interval=setInterval(()=>{
         t--;
-        timerEl.textContent = t;
-        if(t <= 0){
-            clearInterval(countdown);
-            window.location.href = "https://t.me/+FfCbk33qwjxmOTJl";
+        timerEl.textContent=t;
+        if(t<=0){
+            clearInterval(interval);
+            window.location.href="https://t.me/+FfCbk33qwjxmOTJl";
         }
-    }, 1000);
+    },1000);
 }
 </script>
 
