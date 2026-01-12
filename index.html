@@ -8,20 +8,22 @@
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-.neon-box{
-    box-shadow:0 0 12px rgba(255,0,0,.9);
+.neon-red{
+    box-shadow:0 0 28px rgba(255,0,0,1);
+    text-shadow:
+        0 0 10px rgba(255,80,80,1),
+        0 0 22px rgba(255,0,0,1),
+        0 0 35px rgba(255,0,0,.9);
 }
-.btn-neon{
-    box-shadow:0 0 18px rgba(0,255,255,.9);
-    animation:pulse 1.6s infinite;
+.neon-cyan{
+    box-shadow:0 0 22px rgba(0,255,255,1);
 }
-.btn-red-neon{
-    box-shadow:0 0 20px rgba(255,0,0,1);
+.pulse{
     animation:pulse 1.4s infinite;
 }
 @keyframes pulse{
     0%,100%{transform:scale(1)}
-    50%{transform:scale(1.07)}
+    50%{transform:scale(1.08)}
 }
 .overlay{
     position:fixed;
@@ -44,7 +46,6 @@ video{
 
 <body class="bg-black overflow-hidden text-white">
 
-<!-- ===== Background Video ===== -->
 <div class="video-bg">
     <video id="bgVideo" autoplay muted playsinline preload="auto"></video>
 </div>
@@ -55,29 +56,35 @@ video{
 
 <div class="text-center max-w-md w-full">
 
-<h1 class="text-3xl font-bold mb-3">KING MAKER</h1>
+<!-- NAME BOX -->
+<div class="bg-black border-2 border-red-600 neon-red rounded-2xl py-4 mb-4">
+    <h1 class="text-5xl font-extrabold tracking-widest text-red-500">
+        KING MAKER
+    </h1>
+</div>
 
 <img src="https://github.com/mrxsetup/KING_MAKER_PREDICTION/blob/main/KINGMAKERSOUTH.jpg?raw=true"
-class="mx-auto w-28 h-28 rounded-full border-2 border-red-500 neon-box object-cover">
+class="mx-auto w-28 h-28 rounded-full border-2 border-red-500 neon-red object-cover">
 
-<!-- 🔴 Warning Box -->
-<div class="mt-5 bg-red-600 py-3 rounded-lg neon-box font-bold text-lg">
+<!-- WARNING -->
+<div class="mt-5 bg-red-600 rounded-2xl neon-red py-3 font-extrabold text-lg pulse">
 FREE JOINING ENDS IN
 <div class="text-3xl mt-1" id="timer">--</div>
 </div>
 
-<p class="mt-4 text-sm">Daily Cricket Prediction 👇</p>
+<p class="mt-4 text-sm font-bold tracking-wide neon-red">
+Daily Cricket Prediction 👇
+</p>
 
-<!-- CYAN BUTTON -->
+<!-- BUTTONS -->
 <a href="https://t.me/+FfCbk33qwjxmOTJl" class="block">
-<div class="btn-neon w-full mt-4 bg-cyan-400 text-red-700 font-bold py-4 rounded-lg">
+<div class="mt-4 bg-cyan-400 text-red-700 font-extrabold py-4 rounded-2xl neon-cyan pulse">
 JOIN KING MAKER
 </div>
 </a>
 
-<!-- 🔴 RED OFFICIAL BUTTON -->
 <a href="https://t.me/+FfCbk33qwjxmOTJl" class="block">
-<div class="btn-red-neon w-full mt-4 bg-red-600 text-white font-bold py-4 rounded-lg">
+<div class="mt-4 bg-red-600 text-white font-extrabold py-4 rounded-2xl neon-red pulse">
 JOIN OFFICIAL CHANNEL
 </div>
 </a>
@@ -86,56 +93,51 @@ JOIN OFFICIAL CHANNEL
 </div>
 
 <script>
-const videos = [
+const videos=[
  "https://res.cloudinary.com/dzhykus7z/video/upload/v1768206316/50v_iedioy.mp4",
  "https://res.cloudinary.com/dzhykus7z/video/upload/v1768206325/51v_mtwllp.mp4"
 ];
 
-const video = document.getElementById("bgVideo");
-const timerEl = document.getElementById("timer");
+const video=document.getElementById("bgVideo");
+const timerEl=document.getElementById("timer");
+let index=0,totalSeconds=0;
 
-let index = 0;
-let totalSeconds = 0;
-
-/* Play video instantly */
 function playVideo(i){
-    video.src = videos[i];
-    video.load();
-    video.play();
+ video.src=videos[i];
+ video.load();
+ video.play();
 }
 
 video.addEventListener("ended",()=>{
-    index = (index + 1) % videos.length;
-    playVideo(index);
+ index=(index+1)%videos.length;
+ playVideo(index);
 });
 
-/* Calculate duration */
-let loaded = 0;
+let loaded=0;
 videos.forEach(src=>{
-    const v=document.createElement("video");
-    v.src=src;
-    v.addEventListener("loadedmetadata",()=>{
-        totalSeconds+=Math.floor(v.duration);
-        loaded++;
-        if(loaded===videos.length){
-            startTimer(totalSeconds);
-            playVideo(0);
-        }
-    });
+ const v=document.createElement("video");
+ v.src=src;
+ v.addEventListener("loadedmetadata",()=>{
+  totalSeconds+=Math.floor(v.duration);
+  loaded++;
+  if(loaded===videos.length){
+   startTimer(totalSeconds);
+   playVideo(0);
+  }
+ });
 });
 
-/* Timer */
 function startTimer(sec){
-    let t=sec;
-    timerEl.textContent=t;
-    const interval=setInterval(()=>{
-        t--;
-        timerEl.textContent=t;
-        if(t<=0){
-            clearInterval(interval);
-            window.location.href="https://t.me/+FfCbk33qwjxmOTJl";
-        }
-    },1000);
+ let t=sec;
+ timerEl.textContent=t;
+ const int=setInterval(()=>{
+  t--;
+  timerEl.textContent=t;
+  if(t<=0){
+   clearInterval(int);
+   window.location.href="https://t.me/+FfCbk33qwjxmOTJl";
+  }
+ },1000);
 }
 </script>
 
