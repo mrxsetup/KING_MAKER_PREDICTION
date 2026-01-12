@@ -5,140 +5,162 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KING MAKER</title>
 
-<script src="https://cdn.tailwindcss.com"></script>
+<!-- META PIXEL CODE -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1376558720932367');
+fbq('track', 'PageView');
+</script>
 
 <style>
-.neon-red{
-    box-shadow:0 0 28px rgba(255,0,0,1);
-    text-shadow:
-        0 0 10px rgba(255,80,80,1),
-        0 0 22px rgba(255,0,0,1),
-        0 0 35px rgba(255,0,0,.9);
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+
+body{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#fff;
+  overflow:hidden;
 }
-.neon-cyan{
-    box-shadow:0 0 22px rgba(0,255,255,1);
-}
-.pulse{
-    animation:pulse 1.4s infinite;
-}
-@keyframes pulse{
-    0%,100%{transform:scale(1)}
-    50%{transform:scale(1.08)}
-}
-.overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.65);
-    z-index:1;
-}
+
+/* 🔥 Background Video */
 .video-bg{
-    position:fixed;
-    inset:0;
-    z-index:-1;
+  position:fixed;
+  inset:0;
+  z-index:-2;
 }
 video{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  z-index:-1;
+}
+
+.card{
+  width:520px;
+  max-width:95%;
+  text-align:center;
+  background:rgba(0,0,0,.55);
+  padding:40px;
+  border-radius:30px;
+  box-shadow:0 30px 90px rgba(0,0,0,.9);
+}
+
+.avatar{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  border:4px solid red;
+  object-fit:cover;
+  box-shadow:0 0 25px red;
+}
+
+.name{
+  margin:18px 0;
+  font-size:38px;
+  font-weight:900;
+  color:red;
+  text-shadow:0 0 15px red,0 0 30px red;
+  animation:zoomName 1.5s infinite alternate;
+}
+@keyframes zoomName{
+  from{transform:scale(1);}
+  to{transform:scale(1.15);}
+}
+
+.timer{
+  font-size:42px;
+  font-weight:800;
+  color:#ff3b3b;
+  margin:12px 0;
+}
+
+.cta{
+  display:inline-block;
+  padding:16px 42px;
+  border-radius:40px;
+  background:red;
+  color:#fff;
+  font-weight:900;
+  text-decoration:none;
+  margin-top:18px;
+  box-shadow:0 0 15px red,0 0 30px red;
+  animation:btnZoom 1.4s infinite alternate;
+}
+@keyframes btnZoom{
+  from{transform:scale(1);}
+  to{transform:scale(1.1);}
 }
 </style>
 </head>
 
-<body class="bg-black overflow-hidden text-white">
+<body>
 
+<!-- 🔥 Background Videos -->
 <div class="video-bg">
-    <video id="bgVideo" autoplay muted playsinline preload="auto"></video>
+  <video id="bgVideo" autoplay muted playsinline preload="auto"></video>
 </div>
-
 <div class="overlay"></div>
 
-<div class="relative z-10 min-h-screen flex items-center justify-center px-4">
+<div class="card">
 
-<div class="text-center max-w-md w-full">
+<img class="avatar"
+src="https://github.com/mrxsetup/KING_MAKER_PREDICTION/blob/main/KINGMAKERSOUTH.jpg?raw=true">
 
-<!-- NAME BOX -->
-<div class="bg-black border-2 border-red-600 neon-red rounded-2xl py-4 mb-4">
-    <h1 class="text-5xl font-extrabold tracking-widest text-red-500">
-        KING MAKER
-    </h1>
-</div>
+<div class="name">KING MAKER</div>
 
-<img src="https://github.com/mrxsetup/KING_MAKER_PREDICTION/blob/main/KINGMAKERSOUTH.jpg?raw=true"
-class="mx-auto w-28 h-28 rounded-full border-2 border-red-500 neon-red object-cover">
+<div id="timer" class="timer">01:00</div>
 
-<!-- WARNING -->
-<div class="mt-5 bg-red-600 rounded-2xl neon-red py-3 font-extrabold text-lg pulse">
-FREE JOINING ENDS IN
-<div class="text-3xl mt-1" id="timer">--</div>
-</div>
+<p><b>🏆 Daily Cricket Prediction</b><br><b>🔥 High Accuracy Tips</b></p>
 
-<p class="mt-4 text-sm font-bold tracking-wide neon-red">
-Daily Cricket Prediction 👇
-</p>
-
-<!-- BUTTONS -->
-<a href="https://t.me/+FfCbk33qwjxmOTJl" class="block">
-<div class="mt-4 bg-cyan-400 text-red-700 font-extrabold py-4 rounded-2xl neon-cyan pulse">
-JOIN KING MAKER
-</div>
+<a class="cta"
+href="https://t.me/+FfCbk33qwjxmOTJl"
+onclick="fbq('track','Lead');">
+JOIN TELEGRAM
 </a>
 
-<a href="https://t.me/+FfCbk33qwjxmOTJl" class="block">
-<div class="mt-4 bg-red-600 text-white font-extrabold py-4 rounded-2xl neon-red pulse">
-JOIN OFFICIAL CHANNEL
-</div>
-</a>
-
-</div>
 </div>
 
 <script>
+/* 🔥 Background Video Playlist */
 const videos=[
  "https://res.cloudinary.com/dzhykus7z/video/upload/v1768206316/50v_iedioy.mp4",
  "https://res.cloudinary.com/dzhykus7z/video/upload/v1768206325/51v_mtwllp.mp4"
 ];
-
 const video=document.getElementById("bgVideo");
-const timerEl=document.getElementById("timer");
-let index=0,totalSeconds=0;
+let i=0;
 
-function playVideo(i){
+function playVideo(){
  video.src=videos[i];
- video.load();
  video.play();
 }
-
 video.addEventListener("ended",()=>{
- index=(index+1)%videos.length;
- playVideo(index);
+ i=(i+1)%videos.length;
+ playVideo();
 });
+playVideo();
 
-let loaded=0;
-videos.forEach(src=>{
- const v=document.createElement("video");
- v.src=src;
- v.addEventListener("loadedmetadata",()=>{
-  totalSeconds+=Math.floor(v.duration);
-  loaded++;
-  if(loaded===videos.length){
-   startTimer(totalSeconds);
-   playVideo(0);
-  }
- });
-});
-
-function startTimer(sec){
- let t=sec;
- timerEl.textContent=t;
- const int=setInterval(()=>{
-  t--;
-  timerEl.textContent=t;
-  if(t<=0){
-   clearInterval(int);
-   window.location.href="https://t.me/+FfCbk33qwjxmOTJl";
-  }
- },1000);
-}
+/* Timer */
+let sec=60;
+const timer=document.getElementById("timer");
+setInterval(()=>{
+ timer.innerText="0:"+String(sec).padStart(2,"0");
+ if(sec>0) sec--;
+ else window.location.href="https://t.me/+FfCbk33qwjxmOTJl";
+},1000);
 </script>
 
 </body>
