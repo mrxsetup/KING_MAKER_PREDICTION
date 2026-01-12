@@ -1,208 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){
+        n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
+        t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}
+        (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init','2047892055751860');
+        fbq('track','PageView');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KING MAKER</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        .neon-text{
+            color:#00fff7;
+            text-shadow:0 0 8px rgba(0,255,247,.8);
         }
-
-        html, body {
-            height: 100%;
-            color: #fff;
-            overflow-x: hidden;
+        .neon-box{
+            box-shadow:0 0 10px rgba(0,255,247,.7);
         }
-
-        /* ===== Background Video ===== */
-        .video-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            overflow: hidden;
+        .btn-neon{
+            box-shadow:0 0 12px rgba(255,0,0,.7);
+            animation:pulse 1.6s infinite;
         }
-
-        .video-bg video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        @keyframes pulse{
+            0%,100%{transform:scale(1)}
+            50%{transform:scale(1.06)}
         }
-
-        /* ===== Dark Overlay ===== */
-        .overlay {
-            min-height: 100vh;
-            background: rgba(8, 10, 18, 0.80);
-            z-index: 1;
+        .overlay{
+            position:absolute;
+            inset:0;
+            background:rgba(0,0,0,.65);
+            z-index:1;
         }
-
-        .container {
-            max-width: 420px;
-            margin: auto;
-            padding: 20px 15px 90px;
+        .video-bg{
+            position:fixed;
+            inset:0;
+            z-index:-1;
         }
-
-        /* ===== Profile ===== */
-        .profile-box {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .profile-box img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 2px solid #ffffff66;
-            object-fit: cover;
-        }
-
-        .profile-box h1 {
-            margin-top: 12px;
-            font-size: 1.6rem;
-            font-weight: 800;
-        }
-
-        /* ===== Cards ===== */
-        .card {
-            background: #ffffff14;
-            border: 1px solid #ffffff25;
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 15px;
-            text-align: center;
-            backdrop-filter: blur(4px);
-        }
-
-        /* ===== Buttons ===== */
-        .btn {
-            display: block;
-            margin-top: 14px;
-            padding: 14px;
-            border-radius: 30px;
-            background: #1fa2ff;
-            color: #fff;
-            font-weight: 700;
-            text-decoration: none;
-        }
-
-        /* ===== Features ===== */
-        .features {
-            list-style: none;
-            margin-top: 8px;
-        }
-
-        .features li {
-            font-size: .95rem;
-            margin: 6px 0;
-        }
-
-        .features li::before {
-            content: "✓ ";
-            color: #4caf50;
-        }
-
-        /* ===== Footer ===== */
-        .footer {
-            text-align: center;
-            font-size: .85rem;
-            opacity: .85;
-        }
-
-        .footer a {
-            color: #6bd4ff;
-            text-decoration: none;
-        }
-
-        /* ===== Bottom Fixed CTA ===== */
-        .bottom-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: #000000cc;
-            padding: 10px;
-            text-align: center;
-            z-index: 10;
-        }
-
-        .bottom-bar a {
-            display: inline-block;
-            width: 90%;
-            max-width: 320px;
-            padding: 14px;
-            border-radius: 30px;
-            background: #12d8fa;
-            color: #000;
-            font-weight: 800;
-            text-decoration: none;
+        .video-bg video{
+            width:100%;
+            height:100%;
+            object-fit:cover;
         }
     </style>
 </head>
 
-<body>
+<body class="bg-black overflow-hidden">
 
-    <!-- ===== Background Video ===== -->
-    <div class="video-bg">
-        <video autoplay muted loop playsinline>
-            <source src="https://res.cloudinary.com/dzhykus7z/video/upload/v1768203780/BACKNEW_20_uonoms.mp4" type="video/mp4">
-        </video>
-    </div>
+<!-- ===== Background Video ===== -->
+<div class="video-bg">
+    <video autoplay muted loop playsinline>
+        <source src="https://res.cloudinary.com/dzhykus7z/video/upload/v1768203780/BACKNEW_20_uonoms.mp4" type="video/mp4">
+    </video>
+</div>
 
-    <div class="overlay">
+<div class="relative min-h-screen flex items-center justify-center">
 
-        <div class="container">
+    <div class="overlay"></div>
 
-            <div class="profile-box">
-                <img src="https://github.com/mrxsetup/KING_MAKER_PREDICTION/blob/main/KINGMAKERSOUTH.jpg?raw=true"
-                     alt="KING MAKER">
-                <h1>KING MAKER</h1>
-            </div>
+    <div class="relative z-10 text-center text-white px-4 max-w-md w-full">
 
-            <div class="card">
-                <h2>Cricket Match Predictions</h2>
-                <p style="opacity:.9;">Well researched match insights & analysis</p>
-                <a href="https://t.me/+FfCbk33qwjxmOTJl" class="btn">
-                    Join Free Telegram Channel
-                </a>
-            </div>
+        <h1 class="text-3xl font-bold neon-text">
+            KING MAKER
+        </h1>
 
-            <div class="card">
-                <h2>What You Get</h2>
-                <ul class="features">
-                    <li>Match & Toss Analysis</li>
-                    <li>Team Performance Insights</li>
-                    <li>Daily Free Updates</li>
-                    <li>Simple & Clean Info</li>
-                </ul>
-            </div>
+        <img src="https://github.com/mrxsetup/KING_MAKER_PREDICTION/blob/main/KINGMAKERSOUTH.jpg?raw=true"
+             class="mx-auto w-28 h-28 rounded-full mt-4 border-2 border-cyan-400 neon-box object-cover">
 
-            <div class="card">
-                <p style="opacity:.9;">
-                    Trusted by thousands of cricket lovers across India.
-                </p>
-            </div>
+        <p class="mt-3 text-lg font-semibold">
+            Join Now <span id="countdown" class="text-yellow-400 text-2xl mx-1">20</span> Seconds
+        </p>
 
-            <div class="footer">
-                Marketing by :
-                <a href="https://t.me/+lpl9wSvnR3YyZjA1">QB Agency™</a>
-            </div>
-
+        <div class="my-3">
+            <span class="text-red-500 text-3xl font-bold">Top</span>
+            <span class="bg-gray-900 px-3 py-1 rounded neon-box">Accuracy</span>
         </div>
 
-        <div class="bottom-bar">
-            <a href="https://t.me/+FfCbk33qwjxmOTJl">
-                अभी टेलीग्राम जॉइन करें
-            </a>
+        <p class="text-sm mb-4">Daily Cricket Prediction 👇</p>
+
+        <a href="https://t.me/+FfCbk33qwjxmOTJl">
+            <button class="btn-neon w-full bg-cyan-400 text-red-600 font-bold py-4 rounded-lg border-b-4 border-red-600">
+                JOIN KING MAKER
+            </button>
+        </a>
+
+        <a href="https://t.me/+FfCbk33qwjxmOTJl">
+            <button class="btn-neon w-full mt-4 bg-red-500 text-white font-bold py-4 rounded-lg border-b-4 border-cyan-400">
+                JOIN OFFICIAL CHANNEL
+            </button>
+        </a>
+
+        <div class="mt-5 flex justify-center">
+            <div class="text-[10px] px-3 py-1 rounded neon-box text-cyan-300 bg-black/70">
+                Ads-Setup By-@mrxsetup
+            </div>
         </div>
 
     </div>
+</div>
+
+<script>
+    let time = 20;
+    const cd = document.getElementById("countdown");
+    const timer = setInterval(() => {
+        time--;
+        cd.textContent = time;
+        if (time <= 0) {
+            clearInterval(timer);
+            cd.textContent = "0";
+        }
+    }, 1000);
+</script>
 
 </body>
 </html>
