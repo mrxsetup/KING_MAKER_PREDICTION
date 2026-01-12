@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KING MAKER</title>
 
-<!-- META PIXEL -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -31,7 +30,6 @@ body{
  overflow:hidden;
 }
 
-/* Background video */
 .video-bg{position:fixed;inset:0;z-index:-2;}
 video{width:100%;height:100%;object-fit:cover;}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:-1;}
@@ -46,59 +44,62 @@ video{width:100%;height:100%;object-fit:cover;}
  box-shadow:0 30px 90px rgba(0,0,0,.9);
 }
 
-/* 🔷 NAME BOX */
+/* NAME BOX */
 .name-box{
  border:2px solid #00eaff;
- padding:12px;
- border-radius:12px;
- box-shadow:0 0 15px #00eaff,0 0 30px #00eaff;
- margin-bottom:18px;
+ padding:14px;
+ border-radius:10px;
+ box-shadow:0 0 18px #00eaff,0 0 35px #00eaff;
+ margin-bottom:22px;
 }
 .name{
  font-size:36px;
  font-weight:900;
  color:#00eaff;
  letter-spacing:4px;
- text-shadow:0 0 12px #00eaff;
+ text-shadow:0 0 14px #00eaff;
 }
 
-/* Profile */
+/* PROFILE IMAGE */
 .avatar{
- width:120px;height:120px;
+ width:160px;
+ height:160px;
  border-radius:50%;
- border:3px solid #00eaff;
- box-shadow:0 0 20px #00eaff;
+ border:4px solid #00eaff;
+ box-shadow:0 0 30px #00eaff;
  object-fit:cover;
+ margin-bottom:18px;
 }
 
-/* 🟡 TIMER CIRCLE */
+/* 🔽 TIMER (SMALLER) */
 .timer-circle{
- width:140px;height:140px;
- margin:18px auto;
+ width:120px;
+ height:120px;
+ margin:16px auto;
  border-radius:50%;
  display:flex;
  align-items:center;
  justify-content:center;
  border:3px solid yellow;
- box-shadow:0 0 20px yellow,0 0 40px yellow;
+ box-shadow:0 0 18px yellow,0 0 30px yellow;
 }
 .timer{
- font-size:38px;
+ font-size:30px;
  font-weight:900;
  color:yellow;
 }
 
-/* 🔵 BUTTON */
+/* BUTTON */
 .cta{
  display:inline-block;
- margin-top:20px;
+ margin-top:18px;
  padding:16px 42px;
  border-radius:40px;
  background:#007bff;
  color:#fff;
  font-weight:900;
  text-decoration:none;
- box-shadow:0 0 15px #00eaff,0 0 30px #00eaff;
+ box-shadow:0 0 18px #00eaff,0 0 35px #00eaff;
  animation:pulse 1.4s infinite alternate;
 }
 @keyframes pulse{
@@ -106,11 +107,20 @@ video{width:100%;height:100%;object-fit:cover;}
  to{transform:scale(1.08);}
 }
 
-/* Footer text */
-.footer{
- margin-top:20px;
- font-size:12px;
- opacity:.8;
+/* CLICKABLE FOOTER BOX */
+.footer-box{
+ margin-top:22px;
+ padding:10px;
+ border-radius:8px;
+ border:2px solid #00eaff;
+ box-shadow:0 0 12px #00eaff;
+ font-size:13px;
+ cursor:pointer;
+}
+.footer-box a{
+ color:#00eaff;
+ text-decoration:none;
+ font-weight:700;
 }
 </style>
 </head>
@@ -144,8 +154,11 @@ onclick="fbq('track','Lead');">
 JOIN TELEGRAM
 </a>
 
-<div class="footer">
- ADS SETUP BY - @CAPTAIN4433
+<!-- CLICKABLE FOOTER -->
+<div class="footer-box">
+ <a href="https://t.me/CAPTAIN4433" target="_blank">
+  ADS SETUP BY - @CAPTAIN4433
+ </a>
 </div>
 
 </div>
