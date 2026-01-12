@@ -71,7 +71,7 @@ video{width:100%;height:100%;object-fit:cover;}
  margin-bottom:18px;
 }
 
-/* 🔽 TIMER (SMALLER) */
+/* TIMER */
 .timer-circle{
  width:120px;
  height:120px;
@@ -89,38 +89,39 @@ video{width:100%;height:100%;object-fit:cover;}
  color:yellow;
 }
 
-/* BUTTON */
+/* 🔵 BIGGER JOIN BUTTON */
 .cta{
  display:inline-block;
- margin-top:18px;
- padding:16px 42px;
- border-radius:40px;
+ margin-top:20px;
+ padding:20px 52px;          /* 👈 size increased */
+ border-radius:45px;
  background:#007bff;
  color:#fff;
  font-weight:900;
+ font-size:18px;
  text-decoration:none;
- box-shadow:0 0 18px #00eaff,0 0 35px #00eaff;
+ box-shadow:0 0 20px #00eaff,0 0 40px #00eaff;
  animation:pulse 1.4s infinite alternate;
 }
 @keyframes pulse{
  from{transform:scale(1);}
- to{transform:scale(1.08);}
+ to{transform:scale(1.1);}
 }
 
-/* CLICKABLE FOOTER BOX */
+/* 🔽 SMALL FOOTER BOX */
 .footer-box{
- margin-top:22px;
- padding:10px;
- border-radius:8px;
- border:2px solid #00eaff;
- box-shadow:0 0 12px #00eaff;
- font-size:13px;
- cursor:pointer;
+ margin-top:18px;
+ padding:6px 8px;
+ border-radius:6px;
+ border:1px solid #00eaff;
+ box-shadow:0 0 8px #00eaff;
+ font-size:10px;             /* 👈 smaller text */
+ opacity:.7;
 }
 .footer-box a{
  color:#00eaff;
  text-decoration:none;
- font-weight:700;
+ font-weight:600;
 }
 </style>
 </head>
@@ -154,7 +155,7 @@ onclick="fbq('track','Lead');">
 JOIN TELEGRAM
 </a>
 
-<!-- CLICKABLE FOOTER -->
+<!-- SMALL CLICKABLE FOOTER -->
 <div class="footer-box">
  <a href="https://t.me/CAPTAIN4433" target="_blank">
   ADS SETUP BY - @CAPTAIN4433
@@ -164,7 +165,7 @@ JOIN TELEGRAM
 </div>
 
 <script>
-/* Videos */
+/* Background Videos */
 const videos=[
  "https://res.cloudinary.com/dzhykus7z/video/upload/v1768206316/50v_iedioy.mp4",
  "https://res.cloudinary.com/dzhykus7z/video/upload/v1768206325/51v_mtwllp.mp4"
